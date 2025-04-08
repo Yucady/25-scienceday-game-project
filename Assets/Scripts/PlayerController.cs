@@ -68,23 +68,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private float lastScoreTime = 0f;
+    private float scoreCooldown = 0.2f; // 0.2초 안에 중복 점수 방지
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Platform")) return;
-
-        ContactPoint2D contact = collision.GetContact(0);
-
-        if (contact.normal.y > 0.5f)
+        if (collision.gameObject.CompareTag("Platform"))
         {
-            float platformY = collision.transform.position.y;
+            ContactPoint2D contact = collision.GetContact(0);
 
-            if (platformY > lastPlatformY)
+            if (contact.normal.y > 0.5f)
             {
-                lastPlatformY = platformY;
-                ScoreManager.Instance?.AddScore(1);
-            }
+                float platformY = collision.transform.position.y;
 
-            cameraFollow?.MoveCameraToPlatform(platformY);
+                if (platformY > lastPlatformY && Time.time - lastScoreTime > scoreCooldown)
+                {
+                    lastPlatformY = platformY;
+                    lastScoreTime = Time.time;
+                    ScoreManager.Instance?.AddScore(1);
+                }
+
+                CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
+                cameraFollow?.MoveCameraToPlatform(platformY);
+            }
         }
     }
+
+
 }
