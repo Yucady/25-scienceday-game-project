@@ -4,18 +4,31 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
-    public TextMeshProUGUI scoreText;
+
     private int score = 0;
+    public TextMeshProUGUI scoreText;
 
     void Awake()
     {
+        // ΩÃ±€≈Ê º≥¡§
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
-    public void AddScore(int value)
+    public void AddScore(int amount)
     {
-        score += value;
-        scoreText.text = "Score: " + score;
+        score += amount;
+        UpdateScoreUI();
+    }
+
+    void UpdateScoreUI()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + score.ToString();
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 }
