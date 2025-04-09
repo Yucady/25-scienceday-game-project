@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public float forceMultiplier = 5f;
 
     private Camera mainCamera;
-    private float lastPlatformY = float.MinValue;
     private GameOverManager gameOverManager;
     private CameraFollow cameraFollow;
 
@@ -70,21 +69,19 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Platform")) return;
-
-        ContactPoint2D contact = collision.GetContact(0);
-
-        if (contact.normal.y > 0.5f)
+        if (collision.gameObject.CompareTag("Platform"))
         {
-            float platformY = collision.transform.position.y;
+            ContactPoint2D contact = collision.GetContact(0);
 
-            if (platformY > lastPlatformY)
+            if (contact.normal.y > 0.5f)
             {
-                lastPlatformY = platformY;
+                float platformY = collision.transform.position.y;
+                cameraFollow?.MoveCameraToPlatform(platformY);
+
+                // 점수 1점 추가
                 ScoreManager.Instance?.AddScore(1);
             }
-
-            cameraFollow?.MoveCameraToPlatform(platformY);
         }
     }
+
 }
