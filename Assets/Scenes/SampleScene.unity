@@ -770,7 +770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,7 +855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &713584039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4661ef76638b3942922867fc0fb6b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformPrefab: {fileID: 4221860694954803869, guid: 235c53804b478414fb35bfbbaee9ca05, type: 3}
+  platformPrefab: {fileID: 2653474331810264392, guid: 235c53804b478414fb35bfbbaee9ca05, type: 3}
   numberOfPlatforms: 5
   verticalSpacing: 3
   minX: -2.5
@@ -1078,7 +1078,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1394423448}
-  - {fileID: 1042778870}
   - {fileID: 106363908}
   - {fileID: 557932948}
   m_Father: {fileID: 0}
@@ -1116,55 +1115,6 @@ Transform:
   - {fileID: 104176906}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1042778869
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1042778870}
-  - component: {fileID: 1042778871}
-  m_Layer: 0
-  m_Name: DragLineManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1042778870
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042778869}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9461954, y: -6.6449456, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1007419131}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1042778871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042778869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: addb05cb931891f4abfcdadd48450ad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 1258190764}
-  pointCount: 30
-  timeStep: 0.1
-  forceMultiplier: 4
-  launchPoint: {fileID: 1258190759}
 --- !u!1 &1091848600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,8 +1575,8 @@ GameObject:
   - component: {fileID: 1258190758}
   - component: {fileID: 1258190761}
   - component: {fileID: 1258190760}
-  - component: {fileID: 1258190762}
   - component: {fileID: 1258190764}
+  - component: {fileID: 1258190762}
   - component: {fileID: 1258190763}
   m_Layer: 0
   m_Name: Player_apple
