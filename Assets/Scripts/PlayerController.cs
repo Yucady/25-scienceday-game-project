@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 dragStartPos;
     private Vector2 dragEndPos;
     private bool isDragging = false;
+    private bool isGameOver = false;
 
-    [Header("점프 힘 조절")]
     public float forceMultiplier = 5f;
 
     private Camera mainCamera;
@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         mainCamera = Camera.main;
+
         if (mainCamera != null)
             cameraFollow = mainCamera.GetComponent<CameraFollow>();
 
@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isGameOver) return;
+
         HandleDragInput();
         CheckIfOutOfBounds();
     }
@@ -77,11 +79,13 @@ public class PlayerController : MonoBehaviour
             {
                 float platformY = collision.transform.position.y;
                 cameraFollow?.MoveCameraToPlatform(platformY);
-
-                // 점수 1점 추가
                 ScoreManager.Instance?.AddScore(1);
             }
         }
     }
 
+    public void OnGameOver()
+    {
+        isGameOver = true;
+    }
 }

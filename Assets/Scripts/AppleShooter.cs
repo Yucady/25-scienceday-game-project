@@ -11,6 +11,7 @@ public class AppleShooter : MonoBehaviour
     private Vector3 startPoint;
     private Camera cam;
     private bool isDragging = false;
+    private bool isGameOver = false; // 게임 오버 상태 확인
 
     void Start()
     {
@@ -20,6 +21,8 @@ public class AppleShooter : MonoBehaviour
 
     void Update()
     {
+        if (isGameOver || Time.timeScale == 0f) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             isDragging = true;
@@ -47,7 +50,7 @@ public class AppleShooter : MonoBehaviour
             endPoint.z = 0;
 
             Vector2 force = (startPoint - endPoint) * launchForce;
-            appleRb.linearVelocity = force; // ���� ����� ������ � ����!
+            appleRb.linearVelocity = force;
         }
     }
 
@@ -63,5 +66,10 @@ public class AppleShooter : MonoBehaviour
             Vector3 point = startPos + startVelocity * t + 0.5f * gravity * t * t;
             lineRenderer.SetPosition(i, point);
         }
+    }
+
+    public void OnGameOver()
+    {
+        isGameOver = true;
     }
 }
