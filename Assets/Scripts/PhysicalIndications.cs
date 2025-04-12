@@ -3,7 +3,10 @@ using TMPro;
 
 public class PhysicalIndications : MonoBehaviour
 {
-    public Rigidbody2D playerRigidbody; // ����� Rigidbody2D ����
+    [Header("플레이어 Rigidbody2D")]
+    public Rigidbody2D playerRigidbody;
+
+    [Header("UI 텍스트")]
     public TextMeshProUGUI velocityText;
     public TextMeshProUGUI gravityText;
 
@@ -11,15 +14,15 @@ public class PhysicalIndications : MonoBehaviour
     {
         if (playerRigidbody == null) return;
 
-        // ���� �ӵ� ���� (magnitude�� ����ϸ� �ӵ��� ũ��)
+        // 속도 계산
         Vector2 velocity = playerRigidbody.linearVelocity;
         float speed = velocity.magnitude;
 
-        // �߷� ���ӵ� (���������� ������ ��)
+        // 중력 가속도
         Vector2 gravity = Physics2D.gravity;
 
-        // UI�� �ݿ�
-        velocityText.text = $"�ӵ�: {speed:F2} m/s";
-        gravityText.text = $"�߷� ���ӵ�: {gravity.y:F2} m/s��";
+        // UI에 표시
+        velocityText.text = $"Velocity: {speed:F2} m/s";
+        gravityText.text = $"Gravity: {gravity.y:F2} m/s²";
     }
 }

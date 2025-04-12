@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     private GameOverManager gameOverManager;
     private CameraFollow cameraFollow;
 
-    private HashSet<GameObject> visitedPlatforms = new HashSet<GameObject>();
+    // 마지막으로 방문한 플랫폼의 Y 좌표
+    private float lastPlatformY = float.NegativeInfinity;
 
     void Start()
     {
@@ -120,13 +121,16 @@ public class PlayerController : MonoBehaviour
         // ✅ Platform은 점수/카메라 이동용
         if (collision.gameObject.CompareTag("Platform") && contact.normal.y > 0.5f)
         {
-            if (!visitedPlatforms.Contains(collision.gameObject))
-            {
-                visitedPlatforms.Add(collision.gameObject);
+            float platformY = collision.transform.position.y;
 
-                float platformY = collision.transform.position.y;
-                cameraFollow?.MoveCameraToPlatform(platformY);
+            // 이전에 방문한 플랫폼보다 높은 Y 위치라면 점수 추가 및 카메라 이동
+            if (platformY > lastPlatformY)
+            {
+                lastPlatformY = platformY;
+
+                // 점수 추가 및 카메라 이동
                 ScoreManager.Instance?.AddScore(1);
+                cameraFollow?.MoveCameraToPlatform(platformY);
             }
         }
     }
