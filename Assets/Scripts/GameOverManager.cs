@@ -47,7 +47,7 @@ public class GameOverManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
