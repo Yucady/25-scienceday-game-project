@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
@@ -10,11 +10,10 @@ public class GameOverManager : MonoBehaviour
 
     void Update()
     {
-        if (isGameOver) return;
+        if (isGameOver || player == null) return;
 
         Vector3 viewportPos = Camera.main.WorldToViewportPoint(player.position);
 
-        // ¾Æ·¡, ¿ŞÂÊ, ¿À¸¥ÂÊÀ¸·Î ¹ş¾î³ª¸é °ÔÀÓ ¿À¹ö (À§´Â Çã¿ë)
         if (viewportPos.y < 0 || viewportPos.x < 0 || viewportPos.x > 1)
         {
             TriggerGameOver();
@@ -23,21 +22,32 @@ public class GameOverManager : MonoBehaviour
 
     public void TriggerGameOver()
     {
+        if (isGameOver) return;
         isGameOver = true;
 
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
 
-        // °ÔÀÓ Á¤Áö (ÇÃ·¹ÀÌ¾î Á¶ÀÛ Æ÷ÇÔ ¸ØÃã)
-        Time.timeScale = 0f;
+        // í”Œë ˆì´ì–´ ì¡°ì‘ ë§‰ê¸°
+        if (player != null)
+        {
+            PlayerController controller = player.GetComponent<PlayerController>();
+            if (controller != null)
+                controller.OnGameOver();
+        }
+
+        //// AppleShooterë„ ì¡°ì‘ ë§‰ê¸°
+        //AppleShooter shooter = FindObjectOfType<AppleShooter>();
+        //if (shooter != null)
+        //    shooter.OnGameOver();
+
+        //// ê²Œì„ ì •ì§€
+        //Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
-        // °ÔÀÓ ½Ã°£ ´Ù½Ã Àç»ı
-        Time.timeScale = 1f;
-
-        // ÇöÀç ¾À ´Ù½Ã ·Îµå
+        Time.timeScale = 1f; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
