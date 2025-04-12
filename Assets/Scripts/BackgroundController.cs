@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BackgroundController : MonoBehaviour
+public class BackgrounController : MonoBehaviour
 {
     public GameObject backgroundQuadPrefab;
     public Transform player;

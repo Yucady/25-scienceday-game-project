@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
-        // ½Ì±ÛÅæ ¼³Á¤
+        // ì‹±ê¸€í†¤ ì„¤ì •
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
     void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = "Score: " + score.ToString();
+            scoreText.text = "Your Score: " + score.ToString();
     }
 
     public int GetScore()
