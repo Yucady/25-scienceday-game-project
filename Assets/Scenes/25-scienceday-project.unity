@@ -1993,6 +1993,7 @@ GameObject:
   - component: {fileID: 1576294337}
   - component: {fileID: 1576294339}
   - component: {fileID: 1576294338}
+  - component: {fileID: 1576294340}
   m_Layer: 5
   m_Name: GameStart Panel
   m_TagString: Untagged
@@ -2059,6 +2060,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576294336}
   m_CullTransparentMesh: 1
+--- !u!114 &1576294340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576294336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b7d1678056b5246a1f5d37bf8ba970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStartPanel: {fileID: 1576294336}
 --- !u!1 &1929040773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2155,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1929040776}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1576294340}
+        m_TargetAssemblyTypeName: GameStartSceneMove, Assembly-CSharp
+        m_MethodName: OnGameStartButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1929040776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,6 +2218,7 @@ GameObject:
   - component: {fileID: 1945807632}
   - component: {fileID: 1945807631}
   - component: {fileID: 1945807630}
+  - component: {fileID: 1945807634}
   m_Layer: 5
   m_Name: GameStart Ui Canvas
   m_TagString: Untagged
@@ -2282,6 +2309,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1945807634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945807629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b7d1678056b5246a1f5d37bf8ba970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStartPanel: {fileID: 0}
 --- !u!1 &1992433334
 GameObject:
   m_ObjectHideFlags: 0
