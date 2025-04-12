@@ -36,13 +36,13 @@ public class GameOverManager : MonoBehaviour
                 controller.OnGameOver();
         }
 
-        // AppleShooter도 조작 막기
-        AppleShooter shooter = FindObjectOfType<AppleShooter>();
-        if (shooter != null)
-            shooter.OnGameOver();
+        //// AppleShooter도 조작 막기
+        //AppleShooter shooter = FindObjectOfType<AppleShooter>();
+        //if (shooter != null)
+        //    shooter.OnGameOver();
 
-        // 게임 정지
-        Time.timeScale = 0f;
+        //// 게임 정지
+        //Time.timeScale = 0f;
     }
 
     public void RestartGame()
