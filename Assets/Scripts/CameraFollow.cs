@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
-    public float offsetY = 2.5f; // ÇÃ·¹ÀÌ¾î ¾Æ·¡ À§Ä¡·Î Ä«¸Ş¶ó°¡ µû¶ó¿Ã °Å¸®
+    public float offsetY = 2.5f; // í”Œë ˆì´ì–´ ì•„ë˜ ìœ„ì¹˜ë¡œ ì¹´ë©”ë¼ê°€ ë”°ë¼ì˜¬ ê±°ë¦¬
     public float smoothSpeed = 5f;
 
     private float targetY;
@@ -15,23 +15,23 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        // À§·Î¸¸ ÀÌµ¿
+        // ìœ„ë¡œë§Œ ì´ë™
         if (targetY > transform.position.y)
         {
             float newY = Mathf.Lerp(transform.position.y, targetY, smoothSpeed * Time.deltaTime);
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
         }
 
-        // ÇÃ·¹ÀÌ¾î°¡ È­¸é ¾Æ·¡·Î ¶³¾îÁ³´ÂÁö È®ÀÎ
+        // í”Œë ˆì´ì–´ê°€ í™”ë©´ ì•„ë˜ë¡œ ë–¨ì–´ì¡ŒëŠ”ì§€ í™•ì¸
         float camBottom = transform.position.y - Camera.main.orthographicSize;
         if (player.position.y < camBottom)
         {
-            Debug.Log("°ÔÀÓ ¿À¹ö!");
-            // TODO: °ÔÀÓ ¿À¹ö Ã³¸® ÇÔ¼ö È£Ãâ
+            Debug.Log("ê²Œì„ ì˜¤ë²„!");
+            // TODO: ê²Œì„ ì˜¤ë²„ ì²˜ë¦¬ í•¨ìˆ˜ í˜¸ì¶œ
         }
     }
 
-    // ÇÃ·¹ÀÌ¾î°¡ ÇÃ·§Æû¿¡ ÂøÁöÇßÀ» ¶§ È£ÃâÇØÁÙ ÇÔ¼ö
+    // í”Œë ˆì´ì–´ê°€ í”Œë«í¼ì— ì°©ì§€í–ˆì„ ë•Œ í˜¸ì¶œí•´ì¤„ í•¨ìˆ˜
     public void MoveCameraToPlatform(float platformY)
     {
         float desiredY = platformY - offsetY;
