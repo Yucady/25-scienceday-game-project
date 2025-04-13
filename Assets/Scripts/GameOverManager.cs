@@ -14,6 +14,7 @@ public class GameOverManager : MonoBehaviour
 
         Vector3 viewportPos = Camera.main.WorldToViewportPoint(player.position);
 
+        // 화면 밖으로 나가면 게임 오버 처리
         if (viewportPos.y < 0 || viewportPos.x < 0 || viewportPos.x > 1)
         {
             TriggerGameOver();
@@ -29,25 +30,17 @@ public class GameOverManager : MonoBehaviour
             gameOverPanel.SetActive(true);
 
         // 플레이어 조작 막기
-        if (player != null)
-        {
-            PlayerController controller = player.GetComponent<PlayerController>();
-            if (controller != null)
-                controller.OnGameOver();
-        }
+        PlayerController controller = player.GetComponent<PlayerController>();
+        if (controller != null)
+            controller.OnGameOver();
 
-        //// AppleShooter도 조작 막기
-        //AppleShooter shooter = FindObjectOfType<AppleShooter>();
-        //if (shooter != null)
-        //    shooter.OnGameOver();
-
-        //// 게임 정지
-        //Time.timeScale = 0f;
+        // 게임 정지 (타임스케일 0)
+        Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
